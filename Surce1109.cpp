@@ -36,6 +36,7 @@ int main()
                 {
                     cout << "Enter the file name for the binary entry:\n";
                     string iname;
+                    cin.get();
                     getline(cin, iname);
                     ifstream ifs(iname, ios_base::binary);
                     if(!ifs) error("Unable to open input file ", iname);
