@@ -2,6 +2,52 @@
 
 int main()
 {
-
+    cout << "To convert a binary file to text, press 1; \n"
+         << "to reverse convert a text file to binary, press 2;\n"
+         << "to exit, press 3:\n";
+        char flag;
+        while(cin >> flag)
+        {
+            if(flag == '1')
+                {
+                    cout << "Enter the name of the text file to enter:\n";
+                    string iname;
+                    getline(cin, iname);
+                    ifstream ifs(iname);
+                    if(!ifs) error("Unable to open input file ", iname);
+                    vector<string> vs;
+                    for(string s; ifs >> s;)
+                    {
+                        vs.push_back(s);
+                    } 
+                    cout << "Enter the file name for the binary entry:\n";
+                    string oname;
+                    getline(cin, oname);
+                    ofstream ofs{oname, ios_base::binary};
+                     if(!ofs) error("Unable to open output file", oname);
+                    for(string s: vs)
+                    {
+                        ofs.write(as_bytes(s), sizeof(string));
+                    }
+                    break;
+                }
+            else if(flag == '2')
+                {
+                    /* code */
+                    break;
+                }
+            else if(flag == '3')
+                break;
+            else
+                {
+                    cout << "Mistake! Repeat entry:\n"
+                    << "to convert a binary file to text, press 1; \n"
+                    << "to reverse convert a text file to binary, press 2;\n"
+                    << "to exit, press 3:\n";
+                }
+        }
+        
+        
+        
     return 0;
 }
