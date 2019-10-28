@@ -33,7 +33,20 @@ int main()
                 }
             else if(flag == '2')
                 {
-                    /* code */
+                    cout << "Enter the file name for the binary entry:\n";
+                    string iname;
+                    getline(cin, iname);
+                    ifstream ifs(iname, ios_base::binary);
+                    if(!ifs) error("Unable to open input file ", iname);
+                    vector<string>vs;
+                    for(string s; ifs.read(as_bytes(s), sizeof(string));)
+                        vs.push_back(s);
+                    cout << "Enter the file name for the text entry:\n";
+                    string oname;
+                    getline(cin, oname);
+                    ofstream ofs(oname);
+                    for(string s: vs)
+                        ofs << s << '\n';
                     break;
                 }
             else if(flag == '3')
