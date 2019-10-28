@@ -8,4 +8,5 @@ Object file
 *.pdf
 *.xls?
 *.txt
+*.bin
 .gitignor
