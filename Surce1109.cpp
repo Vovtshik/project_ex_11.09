@@ -30,7 +30,7 @@ int main()
                     {
                         ofs.write(as_bytes(s), sizeof(string));
                     }
-                    break;
+                    // break;
                 }
             else if(flag == '2')
                 {
@@ -49,7 +49,7 @@ int main()
                     ofstream ofs(oname);
                     for(string s: vs)
                         ofs << s << '\n';
-                    break;
+                    // break;
                 }
             else if(flag == '3')
                 break;
