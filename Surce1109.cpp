@@ -2,8 +2,8 @@
 
 int main()
 {
-    cout << "\n\nTo convert a binary file to text, press 1; \n"
-         << "to reverse convert a text file to binary, press 2;\n"
+    cout << "\n\nTo convert a text file to binary, press 1; \n"
+         << "to reverse convert a binary file to text, press 2;\n"
          << "to exit, press 3:\n";
         char flag;
         while(cin >> flag)
