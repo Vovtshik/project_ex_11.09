@@ -30,6 +30,9 @@ int main()
                     {
                         ofs.write(as_bytes(s), sizeof(string));
                     }
+                    cout << "\n\nTo convert a text file to binary, press 1; \n"
+                        << "to reverse convert a binary file to text, press 2;\n"
+                        << "to exit, press 3:\n";
                     // break;
                 }
             else if(flag == '2')
@@ -49,6 +52,9 @@ int main()
                     ofstream ofs(oname);
                     for(string s: vs)
                         ofs << s << '\n';
+                    cout << "\n\nTo convert a text file to binary, press 1; \n"
+                        << "to reverse convert a binary file to text, press 2;\n"
+                        << "to exit, press 3:\n";
                     // break;
                 }
             else if(flag == '3')
