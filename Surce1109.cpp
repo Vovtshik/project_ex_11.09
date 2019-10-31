@@ -5,6 +5,7 @@ int main()
     cout << "\n\nTo convert a text file to binary, press 1; \n"
          << "to reverse convert a binary file to text, press 2;\n"
          << "to exit, press 3:\n";
+        vector<string> vs;
         char flag;
         while(cin >> flag)
         {
@@ -16,7 +17,7 @@ int main()
                     getline(cin, iname);
                     ifstream ifs(iname);
                     if(!ifs) error("Unable to open input file ", iname);
-                    vector<string> vs;
+                    
                     for(string s; ifs >> s;)
                     {
                         vs.push_back(s);
@@ -26,12 +27,22 @@ int main()
                     getline(cin, oname);
                     ofstream ofs{oname, ios_base::binary | ios::out};
                      if(!ofs) error("Unable to open output file", oname);
-                    for(string s: vs)
+                     for(string s: vs)
+                     {
+                         ofs.write(as_bytes(s), sizeof(s));
+                     }
+                   /*  for(size_t i = 0; i < vs.size(); ++i)
                     {
-                        /* size_t size = s.size();
-                        ofs.write(as_bytes(s), sizeof(size)); */
+                        size_t size = vs[i].size();
+                        ofs.write((char*)&size, sizeof(size));
+                        ofs.write(vs[i].c_str(), size);
+                    } */
+                   /*  for(string s: vs)
+                    {
+                        // size_t size = s.size();
+                        // ofs.write(as_bytes(s), sizeof(size));
                         ofs.write(as_bytes(s), sizeof(string));
-                    }
+                    } */
                     cout << "\n\nTo convert a text file to binary, press 1; \n"
                         << "to reverse convert a binary file to text, press 2;\n"
                         << "to exit, press 3:\n";
@@ -45,14 +56,25 @@ int main()
                     getline(cin, iname);
                     ifstream ifs(iname, ios_base::binary | ios::in);
                     if(!ifs) error("Unable to open input file ", iname );
-                    vector<string>vs;
-                    for(string s; ifs.read(as_bytes(s), sizeof(string));)
-                        vs.push_back(s);
+                    vector<string>vs2(vs.size());
+                    for(string s; ifs.read(as_bytes(s), sizeof(s));)
+                    {
+                        vs2.push_back(s);
+                    }
+                   /*  for(size_t i = 0; i < vs2.size(); ++i)
+                    {
+                        size_t size;
+                        ifs.read((char*)&size, sizeof(size));
+                        char buf[size + 1];
+                        ifs.read(buf, size);   
+                    } */
+                    /* for(string s; ifs.read(as_bytes(s), sizeof(string));)
+                        vs.push_back(s); */
                     cout << "Enter the file name for the text entry:\n";
                     string oname;
                     getline(cin, oname);
                     ofstream ofs(oname);
-                    for(string s: vs)
+                    for(string s: vs2)
                         ofs << s << '\n';
                     cout << "\n\nTo convert a text file to binary, press 1; \n"
                         << "to reverse convert a binary file to text, press 2;\n"
