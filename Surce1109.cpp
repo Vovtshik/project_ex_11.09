@@ -24,10 +24,12 @@ int main()
                     cout << "Enter the file name for the binary entry:\n";
                     string oname;
                     getline(cin, oname);
-                    ofstream ofs{oname, ios_base::binary};
+                    ofstream ofs{oname, ios_base::binary | ios::out};
                      if(!ofs) error("Unable to open output file", oname);
                     for(string s: vs)
                     {
+                        /* size_t size = s.size();
+                        ofs.write(as_bytes(s), sizeof(size)); */
                         ofs.write(as_bytes(s), sizeof(string));
                     }
                     cout << "\n\nTo convert a text file to binary, press 1; \n"
@@ -41,8 +43,8 @@ int main()
                     string iname;
                     cin.get();
                     getline(cin, iname);
-                    ifstream ifs(iname, ios_base::binary);
-                    if(!ifs) error("Unable to open input file ", iname);
+                    ifstream ifs(iname, ios_base::binary | ios::in);
+                    if(!ifs) error("Unable to open input file ", iname );
                     vector<string>vs;
                     for(string s; ifs.read(as_bytes(s), sizeof(string));)
                         vs.push_back(s);
