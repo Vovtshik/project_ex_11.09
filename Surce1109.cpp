@@ -29,8 +29,12 @@ int main()
                      if(!ofs) error("Unable to open output file", oname);
                      for(string s: vs)
                      {
-                         ofs.write(as_bytes(s), sizeof(s));
+                         ofs.write((char*)&s, sizeof(s));
                      }
+                     /* for(string s: vs)
+                     {
+                         ofs.write(as_bytes(s), sizeof(s));
+                     } */
                    /*  for(size_t i = 0; i < vs.size(); ++i)
                     {
                         size_t size = vs[i].size();
@@ -56,11 +60,20 @@ int main()
                     getline(cin, iname);
                     ifstream ifs(iname, ios_base::binary | ios::in);
                     if(!ifs) error("Unable to open input file ", iname );
-                    vector<string>vs2(vs.size());
-                    for(string s; ifs.read(as_bytes(s), sizeof(s));)
+                    vector<string>vs2/* (vs.size()) */;
+                    for(string s; ifs.read((char*)&s, sizeof(s));)
                     {
+                        cout << s << '\n';
                         vs2.push_back(s);
                     }
+                    /* for(string s; ifs.read(as_bytes(s), sizeof(s));)
+                    {
+
+                        cout << s << '\n';
+                        vs2.push_back(s);
+                        if(ifs.eof())
+                            break;
+                    } */
                    /*  for(size_t i = 0; i < vs2.size(); ++i)
                     {
                         size_t size;
