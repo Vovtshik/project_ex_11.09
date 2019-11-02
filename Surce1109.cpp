@@ -25,11 +25,11 @@ int main()
                     cout << "Enter the file name for the binary entry:\n";
                     string oname;
                     getline(cin, oname);
-                    ofstream ofs{oname, ios_base::binary | ios::out};
+                    ofstream ofs{oname, ios_base::out /* | ios_base::app  */| ios_base::binary};
                      if(!ofs) error("Unable to open output file", oname);
                      for(string s: vs)
                      {
-                         ofs.write((char*)&s, sizeof(s));
+                         ofs.write((char*) &s, sizeof s);
                      }
                      /* for(string s: vs)
                      {
@@ -58,12 +58,12 @@ int main()
                     string iname;
                     cin.get();
                     getline(cin, iname);
-                    ifstream ifs(iname, ios_base::binary | ios::in);
+                    ifstream ifs(iname,  ios::in | ios_base::binary);
                     if(!ifs) error("Unable to open input file ", iname );
                     vector<string>vs2/* (vs.size()) */;
-                    for(string s; ifs.read((char*)&s, sizeof(s));)
+                    for(string s; ifs.read((char*) &s, sizeof s);)
                     {
-                        cout << s << '\n';
+                        //cout << s << '\n';
                         vs2.push_back(s);
                     }
                     /* for(string s; ifs.read(as_bytes(s), sizeof(s));)
@@ -85,6 +85,7 @@ int main()
                         vs.push_back(s); */
                     cout << "Enter the file name for the text entry:\n";
                     string oname;
+                    cin.get();
                     getline(cin, oname);
                     ofstream ofs(oname);
                     for(string s: vs2)
