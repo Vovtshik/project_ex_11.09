@@ -34,7 +34,7 @@ int main()
 		}
 		else if (flag == '2')
 		{
-			cout << "Enter the file name for the binary entry:\n";
+			cout << "Enter the file name for binary reading:\n";
 			string iname;
 			cin.get();
 			getline(cin, iname);
