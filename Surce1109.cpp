@@ -1,7 +1,7 @@
 #include "../std_lib_facilities.h"
 
-void text_file_to_binery_file(vector<string>& vs);
-void binery_file_to_text_file(vector<string>& vs);
+void text_file_to_binery_file(vector<string>& vs);  // The function converts a text file to a binary.
+void binery_file_to_text_file(vector<string>& vs);  // The function converts a binary file to a text file.
 
 int main()
 {
