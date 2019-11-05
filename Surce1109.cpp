@@ -5,7 +5,6 @@ void binery_file_to_text_file(vector<string>& vs);  // The function converts a b
 
 int main()
 {
-	char flag;
 	vector<string> vs;
 	text_file_to_binery_file(vs);
 	binery_file_to_text_file(vs);
