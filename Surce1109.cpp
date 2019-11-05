@@ -1,5 +1,8 @@
 #include "../std_lib_facilities.h"
 
+void text_file_to_binery_file(vector<string>& vs);
+void binery_file_to_text_file(vector<string>& vs);
+
 int main()
 {
 	/* cout << "\n\nTo convert a text file to binary, press 1; \n"
