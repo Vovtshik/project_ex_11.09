@@ -10,8 +10,10 @@ int main()
 		<< "to exit, press 3:\n"; */
 	char flag;
 	vector<string> vs;
+	text_file_to_binery_file(vs);
+	binery_file_to_text_file(vs);
 	/* vector<string> vs2; */
-	while (cin >> flag)
+	/* while (cin >> flag)
 	{
 		if (flag == '1')
 		{
@@ -70,7 +72,7 @@ int main()
 				continue;
 			}
 		}
-	}
+	} */
 	return 0;
 }
 
